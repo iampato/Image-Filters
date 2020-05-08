@@ -1,0 +1,4 @@
+Android NDK: WARNING: Unsupported source file extensions in /home/pato/Flutter/filter/android/src/main/jni/Android.mk for module NativeImageProcessor    
+Android NDK:   Android.mk Application.mk    
+[x86_64] Compile++      : NativeImageProcessor <= NativeImageProcessor.cpp
+[x86_64] SharedLibrary  : libNativeImageProcessor.so

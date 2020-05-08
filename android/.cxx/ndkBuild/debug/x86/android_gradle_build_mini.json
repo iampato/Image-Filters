@@ -1,0 +1,18 @@
+{
+  "buildFiles": [
+    "/home/pato/Flutter/filter/android/src/main/jni/Android.mk",
+    "/home/pato/Flutter/filter/android/src/main/jni/Application.mk"
+  ],
+  "cleanCommands": [
+    "/home/pato/Android/Sdk/ndk/21.1.6352462/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/home/pato/Flutter/filter/android/src/main/jni/Android.mk NDK_APPLICATION_MK\u003d/home/pato/Flutter/filter/android/src/main/jni/Application.mk APP_ABI\u003dx86 NDK_ALL_ABIS\u003dx86 NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/home/pato/Flutter/filter/example/build/filter/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003d/home/pato/Flutter/filter/example/build/filter/intermediates/ndkBuild/debug/lib clean"
+  ],
+  "buildTargetsCommand": "/home/pato/Android/Sdk/ndk/21.1.6352462/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/home/pato/Flutter/filter/android/src/main/jni/Android.mk NDK_APPLICATION_MK\u003d/home/pato/Flutter/filter/android/src/main/jni/Application.mk APP_ABI\u003dx86 NDK_ALL_ABIS\u003dx86 NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/home/pato/Flutter/filter/example/build/filter/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003d/home/pato/Flutter/filter/example/build/filter/intermediates/ndkBuild/debug/lib {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "NativeImageProcessor-debug-x86": {
+      "artifactName": "NativeImageProcessor",
+      "buildCommand": "/home/pato/Android/Sdk/ndk/21.1.6352462/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/home/pato/Flutter/filter/android/src/main/jni/Android.mk NDK_APPLICATION_MK\u003d/home/pato/Flutter/filter/android/src/main/jni/Application.mk APP_ABI\u003dx86 NDK_ALL_ABIS\u003dx86 NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/home/pato/Flutter/filter/example/build/filter/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003d/home/pato/Flutter/filter/example/build/filter/intermediates/ndkBuild/debug/lib /home/pato/Flutter/filter/example/build/filter/intermediates/ndkBuild/debug/obj/local/x86/libNativeImageProcessor.so",
+      "abi": "x86",
+      "output": "/home/pato/Flutter/filter/example/build/filter/intermediates/ndkBuild/debug/obj/local/x86/libNativeImageProcessor.so"
+    }
+  }
+}
