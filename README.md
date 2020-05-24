@@ -2,6 +2,8 @@
 
 A new flutter plugin project.
 
+### WARNING!! Implemented in Android PR are welcomed for Ios implementation 
+
 ## Getting Started
 
 This project is a starting point for a Flutter
