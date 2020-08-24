@@ -1,6 +1,6 @@
 # filter
 
-A new flutter plugin project.
+A flutter plugin project to apply images filters to file image natively and efficiently.
 
 ### WARNING!! Implemented in Android PR are welcomed for Ios implementation 
 
