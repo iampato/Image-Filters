@@ -7,3 +7,7 @@
 build/
 
 android/.cxx/*
+android/.idea/misc.xml
+android/.idea/gradle.xml
+.idea/codeStyles/Project.xml
+.idea/workspace.xml
