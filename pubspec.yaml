@@ -1,5 +1,5 @@
 name: filter
-description: A flutter plugin to apply images filters natively.
+description: A flutter plugin project to apply images filters to file image natively and efficiently.
 version: 0.0.3
 homepage: https://github.com/Iampato/Image-Filters
 
