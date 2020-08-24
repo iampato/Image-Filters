@@ -5,7 +5,7 @@ A new flutter plugin project.
 ### WARNING!! Implemented in Android PR are welcomed for Ios implementation 
 
 ## Screenshot
-<img height=100 src="flutter_01.jpg">
+<img height=300 src="https://raw.githubusercontent.com/Iampato/Image-Filters/master/flutter_01.png">
 ## Getting Started
 
 This project is a starting point for a Flutter
