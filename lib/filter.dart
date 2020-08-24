@@ -1,11 +1,9 @@
 import 'dart:async';
-import 'dart:typed_data';
 
 import 'package:flutter/services.dart';
 
 class Filter {
-  static const MethodChannel _channel =
-  const MethodChannel('filter');
+  static const MethodChannel _channel = const MethodChannel('filter');
 
   static Future getThumbs(String filePath) async {
     var result = await _channel.invokeMethod('generateFilters', filePath);
