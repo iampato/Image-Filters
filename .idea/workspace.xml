@@ -2,14 +2,74 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ba2244b-d11c-4e7d-b74c-2b919751b28e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/android/src/main/java/com/example/filter/BackgroundTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/java/com/example/filter/FilterPlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/arm64-v8a/android_gradle_build.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/arm64-v8a/android_gradle_build.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/arm64-v8a/android_gradle_build_NativeImageProcessor_arm64-v8a.command.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/arm64-v8a/android_gradle_build_NativeImageProcessor_arm64-v8a.command.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/arm64-v8a/android_gradle_build_NativeImageProcessor_arm64-v8a.stdout.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/arm64-v8a/android_gradle_build_NativeImageProcessor_arm64-v8a.stdout.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/arm64-v8a/android_gradle_build_mini.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/arm64-v8a/android_gradle_build_mini.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/arm64-v8a/build_command.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/arm64-v8a/build_command.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/arm64-v8a/build_model.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/arm64-v8a/build_model.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/arm64-v8a/build_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/arm64-v8a/build_output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/arm64-v8a/json_generation_record.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/arm64-v8a/json_generation_record.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/armeabi-v7a/android_gradle_build.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/armeabi-v7a/android_gradle_build.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/armeabi-v7a/android_gradle_build_NativeImageProcessor_armeabi-v7a.command.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/armeabi-v7a/android_gradle_build_NativeImageProcessor_armeabi-v7a.command.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/armeabi-v7a/android_gradle_build_NativeImageProcessor_armeabi-v7a.stdout.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/armeabi-v7a/android_gradle_build_NativeImageProcessor_armeabi-v7a.stdout.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/armeabi-v7a/android_gradle_build_mini.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/armeabi-v7a/android_gradle_build_mini.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/armeabi-v7a/build_command.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/armeabi-v7a/build_command.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/armeabi-v7a/build_model.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/armeabi-v7a/build_model.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/armeabi-v7a/build_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/armeabi-v7a/build_output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/armeabi-v7a/json_generation_record.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/armeabi-v7a/json_generation_record.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86/android_gradle_build.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86/android_gradle_build.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86/android_gradle_build_NativeImageProcessor_x86.command.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86/android_gradle_build_NativeImageProcessor_x86.command.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86/android_gradle_build_NativeImageProcessor_x86.stdout.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86/android_gradle_build_NativeImageProcessor_x86.stdout.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86/android_gradle_build_mini.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86/android_gradle_build_mini.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86/build_command.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86/build_command.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86/build_model.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86/build_model.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86/build_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86/build_output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86/json_generation_record.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86/json_generation_record.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86_64/android_gradle_build.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86_64/android_gradle_build.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86_64/android_gradle_build_NativeImageProcessor_x86_64.command.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86_64/android_gradle_build_NativeImageProcessor_x86_64.command.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86_64/android_gradle_build_NativeImageProcessor_x86_64.stdout.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86_64/android_gradle_build_NativeImageProcessor_x86_64.stdout.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86_64/android_gradle_build_mini.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86_64/android_gradle_build_mini.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86_64/build_command.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86_64/build_command.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86_64/build_model.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86_64/build_model.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86_64/build_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86_64/build_output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86_64/json_generation_record.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndkBuild/debug/x86_64/json_generation_record.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.cxx/ndk_locator_record.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/.cxx/ndk_locator_record.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/example/filter/BackgroundTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/example/filter/FilterPlugin.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/example/filter/ThumbnailItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/example/filter/ThumbnailItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/zomato/photofilters/SampleFilters.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/zomato/photofilters/SampleFilters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/zomato/photofilters/geometry/BezierSpline.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/zomato/photofilters/geometry/BezierSpline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/zomato/photofilters/geometry/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/zomato/photofilters/geometry/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/zomato/photofilters/imageprocessors/Filter.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/zomato/photofilters/imageprocessors/Filter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/zomato/photofilters/imageprocessors/ImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/zomato/photofilters/imageprocessors/ImageProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/zomato/photofilters/imageprocessors/NativeImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/zomato/photofilters/imageprocessors/NativeImageProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/zomato/photofilters/imageprocessors/SubFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/zomato/photofilters/imageprocessors/SubFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/zomato/photofilters/imageprocessors/subfilters/BrightnessSubFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/zomato/photofilters/imageprocessors/subfilters/BrightnessSubFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/zomato/photofilters/imageprocessors/subfilters/ColorOverlaySubFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/zomato/photofilters/imageprocessors/subfilters/ColorOverlaySubFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/zomato/photofilters/imageprocessors/subfilters/ContrastSubFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/zomato/photofilters/imageprocessors/subfilters/ContrastSubFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/zomato/photofilters/imageprocessors/subfilters/SaturationSubFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/zomato/photofilters/imageprocessors/subfilters/SaturationSubFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/zomato/photofilters/imageprocessors/subfilters/ToneCurveSubFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/zomato/photofilters/imageprocessors/subfilters/ToneCurveSubFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/zomato/photofilters/imageprocessors/subfilters/VignetteSubFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/zomato/photofilters/imageprocessors/subfilters/VignetteSubFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/filter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/filter.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="iphone" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -20,7 +80,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="dart.analysis.tool.window.force.activate" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/android" />
     <property name="show.migrate.to.gradle.popup" value="false" />
@@ -39,9 +100,13 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="490" y="141" key="FileChooserDialogImpl" timestamp="1588862066222">
-      <screen x="41" y="24" width="1325" height="744" />
+    <state x="531" y="259" width="293" height="206" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1598267867517">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="490" y="141" key="FileChooserDialogImpl/41.24.1325.744@41.24.1325.744" timestamp="1588862066222" />
+    <state x="531" y="259" width="293" height="206" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1598267867517" />
+    <state x="466" y="121" width="424" height="478" key="FileChooserDialogImpl" timestamp="1598208738075">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="466" y="121" width="424" height="478" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1598208738075" />
   </component>
 </project>
