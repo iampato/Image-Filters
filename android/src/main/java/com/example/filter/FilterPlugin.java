@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
+
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
@@ -34,7 +35,6 @@ public class FilterPlugin implements FlutterPlugin, MethodChannel.MethodCallHand
 
     @Override
     public void onAttachedToEngine(@NonNull FlutterPluginBinding binding) {
-
         channel = new MethodChannel(binding.getBinaryMessenger(), "filter");
         context = binding.getApplicationContext();
         channel.setMethodCallHandler(this);
@@ -48,44 +48,29 @@ public class FilterPlugin implements FlutterPlugin, MethodChannel.MethodCallHand
 
     @Override
     public void onMethodCall(@NonNull MethodCall call, @NonNull MethodChannel.Result result) {
-        switch (call.method) {
-            case "generateFilters":
-                byte[] bytesFromDart = (byte[]) call.arguments;
-                Bitmap bitmap = BitmapFactory.decodeByteArray(bytesFromDart, 0, bytesFromDart.length);
-                applyFilter(bitmap, result);
-                break;
-            case "final_output":
-                byte[] finalBytes = (byte[]) call.arguments;
-                createTemporaryImageFile(finalBytes, result);
-                break;
+        if (call.method.equals("generateFilters")) {
+            String filePathFromDart = (String) call.arguments;
+            File imageFile = new File(filePathFromDart);
+            applyFilter(imageFile, result);
+        } else {
+            result.notImplemented();
         }
     }
 
-    private void applyFilter(Bitmap bitmap, MethodChannel.Result result) {
-        try {
-            List<byte[]> response = new BackgroundTask().execute(bitmap).get();
-            result.success(response);
-        } catch (Exception e) {
-            result.error("Execution", e.toString(), null);
+    private void applyFilter(File image, MethodChannel.Result result) {
+
+        if (image.exists()) {
+            Bitmap bitmap = BitmapFactory.decodeFile(image.getPath(), null);
+            ContextModel contextModel = new ContextModel(bitmap, context);
+            try {
+                List<String> response = new BackgroundTask().execute(contextModel).get();
+                result.success(response);
+            } catch (Exception e) {
+                result.error("Execution", e.toString(), null);
+            }
+        } else {
+            result.error("IOException", "File not exist", null);
         }
     }
 
-    private void createTemporaryImageFile(byte[] imageBytes, MethodChannel.Result result) {
-
-        File directory = context.getCacheDir();
-        String name = "image_crop_" + UUID.randomUUID().toString();
-        try {
-
-
-            File f = File.createTempFile(name, ".jpg", directory);
-            FileOutputStream fos = new FileOutputStream(f);
-
-            fos.write(imageBytes);
-            fos.flush();
-            fos.close();
-            result.success(f.getPath());
-        } catch (IOException e) {
-            result.error("DIRECTORY", e.toString(), null);
-        }
-    }
 }

@@ -5,10 +5,15 @@ import 'package:flutter/services.dart';
 
 class Filter {
   static const MethodChannel _channel =
-      const MethodChannel('filter');
+  const MethodChannel('filter');
 
-  static Future getThumbs(Uint8List data) async {
-    var result = await _channel.invokeMethod('generateFilters', data);
+  static Future getThumbs(String filePath) async {
+    var result = await _channel.invokeMethod('generateFilters', filePath);
+    return result;
+  }
+
+  static Future finalOutput(String filePath) async {
+    var result = await _channel.invokeMethod('final_output', filePath);
     return result;
   }
 }
