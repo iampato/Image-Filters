@@ -1,3 +1,4 @@
-## 0.0.2
+## 0.0.3
 
-* TODO: Describe initial release.
+- Runs in the background
+- Add more filters
