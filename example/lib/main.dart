@@ -107,15 +107,16 @@ class _HomePageState extends State<HomePage> {
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
-                            child: Image.file(
-                              File(_results[index]),
+                            child: Image.memory(
+                              _results[index]
+                              // File(),
                             ),
                           ),
                         ),
                         onTap: () {
-                          setState(() {
-                            imagePath = _results[index];
-                          });
+                          // setState(() {
+                          //   imagePath = _results[index];
+                          // });
                         },
                       );
                     },
@@ -129,7 +130,7 @@ class _HomePageState extends State<HomePage> {
           FloatingActionButton(
             heroTag: "btn2",
             child: Icon(Icons.done),
-            onPressed: () => null,
+            onPressed: () => setState(() {}),
           ),
           SizedBox(height: 10),
           FloatingActionButton(
