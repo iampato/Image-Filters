@@ -3,11 +3,13 @@ package com.example.filter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.zomato.photofilters.SampleFilters;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -16,59 +18,67 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class BackgroundTask extends AsyncTask<ContextModel, Integer, List<String>> {
-    private List<ThumbnailItem> filterThumbs = new ArrayList<ThumbnailItem>();
-    private List<String> processedThumbs = new ArrayList<String>();
+//public class BackgroundTask extends AsyncTask<ContextModel, Integer, List<String>> {
+//    private List<ThumbnailItem> filterThumbs = new ArrayList<ThumbnailItem>();
+//    private List<String> processedThumbs = new ArrayList<String>();
 
+public class BackgroundTask {
+    ContextModel contextModel;
+    private static List<ThumbnailItem> filterThumbs = new ArrayList<ThumbnailItem>();
+    private static List<byte[]> processedThumbs = new ArrayList<byte[]>();
 
-    @Override
-    protected List<String> doInBackground(ContextModel... contextModels) {
-        Bitmap bitmap = contextModels[0].image;
-        Context context = contextModels[0].context;
+    BackgroundTask(ContextModel contextModel) {
+        this.contextModel = contextModel;
+    }
 
+    //    @Override
+    public List<byte[]> doInBackground() {
+
+        Bitmap bitmap = this.contextModel.image;
+        Context context = this.contextModel.context;
         ThumbnailItem t1 = new ThumbnailItem();
         ThumbnailItem t2 = new ThumbnailItem();
         ThumbnailItem t3 = new ThumbnailItem();
-//        ThumbnailItem t4 = new ThumbnailItem();
+        ThumbnailItem t4 = new ThumbnailItem();
         ThumbnailItem t5 = new ThumbnailItem();
         ThumbnailItem t6 = new ThumbnailItem();
         ThumbnailItem t7 = new ThumbnailItem();
         ThumbnailItem t8 = new ThumbnailItem();
-//        ThumbnailItem t9 = new ThumbnailItem();
-//        ThumbnailItem t10 = new ThumbnailItem();
+        ThumbnailItem t9 = new ThumbnailItem();
+        ThumbnailItem t10 = new ThumbnailItem();
         ThumbnailItem t11 = new ThumbnailItem();
         ThumbnailItem t12 = new ThumbnailItem();
         ThumbnailItem t13 = new ThumbnailItem();
         ThumbnailItem t14 = new ThumbnailItem();
-//        ThumbnailItem t15 = new ThumbnailItem();
-//        ThumbnailItem t16 = new ThumbnailItem();
+        ThumbnailItem t15 = new ThumbnailItem();
+        ThumbnailItem t16 = new ThumbnailItem();
         ThumbnailItem t17 = new ThumbnailItem();
 
         t1.image = bitmap;
         t2.image = bitmap;
         t3.image = bitmap;
-//        t4.image = bitmap;
+        t4.image = bitmap;
         t5.image = bitmap;
         t6.image = bitmap;
         t7.image = bitmap;
         t8.image = bitmap;
-//        t9.image = bitmap;
-//        t10.image = bitmap;
+        t9.image = bitmap;
+        t10.image = bitmap;
         t11.image = bitmap;
         t12.image = bitmap;
         t13.image = bitmap;
         t14.image = bitmap;
-//        t15.image = bitmap;
-//        t16.image = bitmap;
+        t15.image = bitmap;
+        t16.image = bitmap;
         t17.image = bitmap;
 
-//            clearThumbs()
+            clearThumbs();
         filterThumbs = new ArrayList();
 
         filterThumbs.add(t1);// Original Image
 
-//        t4.filter = SampleFilters.getAweStruckVibeFilter();
-//        filterThumbs.add(t4);
+        t4.filter = SampleFilters.getAweStruckVibeFilter();
+        filterThumbs.add(t4);
 
         t13.filter = SampleFilters.getClarendon();
         filterThumbs.add(t13);
@@ -76,12 +86,11 @@ public class BackgroundTask extends AsyncTask<ContextModel, Integer, List<String
         t14.filter = SampleFilters.getOldManFilter();
         filterThumbs.add(t14);
 
-
         t12.filter = SampleFilters.getMarsFilter();
         filterThumbs.add(t12);
 
-//        t16.filter = SampleFilters.getRiseFilter();
-//        filterThumbs.add(t16);
+        t16.filter = SampleFilters.getRiseFilter();
+        filterThumbs.add(t16);
 
         t17.filter = SampleFilters.getAprilFilter();
         filterThumbs.add(t17);
@@ -98,8 +107,8 @@ public class BackgroundTask extends AsyncTask<ContextModel, Integer, List<String
         t5.filter = SampleFilters.getLimeStutterFilter();
         filterThumbs.add(t5);
 
-//        t15.filter = SampleFilters.getHaanFilter();
-//        filterThumbs.add(t15);
+        t15.filter = SampleFilters.getHaanFilter();
+        filterThumbs.add(t15);
 
         t3.filter = SampleFilters.getBlueMessFilter();
         filterThumbs.add(t3);
@@ -107,26 +116,28 @@ public class BackgroundTask extends AsyncTask<ContextModel, Integer, List<String
         t8.filter = SampleFilters.getAdeleFilter();
         filterThumbs.add(t8);
 
-//        t9.filter = SampleFilters.getCruzFilter();
-//        filterThumbs.add(t9);
+        t9.filter = SampleFilters.getCruzFilter();
+        filterThumbs.add(t9);
 
-//        t10.filter = SampleFilters.getMetropolis();
-//        filterThumbs.add(t10);
+        t10.filter = SampleFilters.getMetropolis();
+        filterThumbs.add(t10);
 
         t11.filter = SampleFilters.getAudreyFilter();
         filterThumbs.add(t11);
 
         for (ThumbnailItem thumb : filterThumbs) {
-
-            thumb.image = resize(thumb.image, 640, 640);
+            thumb.image = resize(thumb.image, 128, 128);
             thumb.image = thumb.filter.processFilter(thumb.image);
-
-            processedThumbs.add(createTemporaryImageFile(context, thumb.image));
+            processedThumbs.add(convert(thumb.image));
         }
         return processedThumbs;
 
     }
 
+    public void clearThumbs() {
+        filterThumbs = new ArrayList<>();
+        processedThumbs = new ArrayList<>();
+    }
     private static byte[] convert(Bitmap thumb) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         thumb.compress(Bitmap.CompressFormat.PNG, 80, stream);
@@ -136,7 +147,7 @@ public class BackgroundTask extends AsyncTask<ContextModel, Integer, List<String
     private String createTemporaryImageFile(Context context, Bitmap bitmap) {
 
         File directory = context.getCacheDir();
-        String name = "image_crop_" + UUID.randomUUID().toString();
+        String name = "image_filter_" + UUID.randomUUID().toString();
         try {
             File f = File.createTempFile(name, ".jpg", directory);
             FileOutputStream fos = new FileOutputStream(f);
@@ -151,8 +162,9 @@ public class BackgroundTask extends AsyncTask<ContextModel, Integer, List<String
         }
     }
 
-    private static Bitmap resize(Bitmap imaged, int maxWidth, int maxHeight) {
+    private Bitmap resize(Bitmap imaged, int maxWidth, int maxHeight) {
         Bitmap image = imaged;
+
         if (maxHeight > 0 && maxWidth > 0) {
             int width = image.getWidth();
             int height = image.getHeight();
@@ -169,5 +181,6 @@ public class BackgroundTask extends AsyncTask<ContextModel, Integer, List<String
         }
         return image;
     }
+
 
 }
