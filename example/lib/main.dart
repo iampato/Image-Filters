@@ -1,8 +1,7 @@
 import 'dart:io';
+import 'package:filter_example/test.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-
-import 'package:flutter/services.dart';
 import 'package:filter/filter.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -35,13 +34,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List _results;
+  String original;
   String imagePath;
+
   final ImagePicker _picker = ImagePicker();
 
   void takeImage() async {
     PickedFile images = await _picker.getImage(source: ImageSource.gallery);
     setState(() {
       imagePath = images.path;
+      original = images.path;
     });
   }
 
@@ -55,7 +57,7 @@ class _HomePageState extends State<HomePage> {
 
     try {
       results = await Filter.getThumbs(imagePath);
-    } catch(e){
+    } catch (e) {
       results = 'Error: $e';
     }
 
@@ -66,16 +68,20 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  Future<void> applyFinal(int index) async {
+  Future applyFinal(int index) async {
     var results;
 
     try {
-      results = await Filter.finalOutput(imagePath, index + 1);
-    } catch(e){
+      results = await Filter.finalOutput(original, index + 1);
+    } catch (e) {
       results = 'Error: $e';
     }
 
     if (!mounted) return;
+
+    setState(() {
+      imagePath = results;
+    });
 
     print("###### results: $results");
   }
@@ -119,15 +125,29 @@ class _HomePageState extends State<HomePage> {
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Text("${Filter.filters[index]}"),
-                              Image.memory(
-                                _results[index],
+                              Text(
+                                "${Filter.filters[index]}",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              CircleAvatar(
+                                radius: 40,
+                                backgroundImage: MemoryImage(
+                                  _results[index],
+                                ),
                               ),
                             ],
                           ),
                         ),
                         onTap: () {
-                          applyFinal(index);
+                          if (index == 0) {
+                            return null;
+                          } else {
+                            print("###index## $index");
+                            applyFinal(index);
+                          }
                         },
                       );
                     },
