@@ -1,13 +1,14 @@
 import 'dart:io';
-
-import 'package:christian_picker_image/christian_picker_image.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:filter/filter.dart';
+import 'package:image_picker/image_picker.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatefulWidget {
   @override
@@ -35,23 +36,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List _results;
   String imagePath;
+  final ImagePicker _picker = ImagePicker();
 
-  void takeImage(BuildContext context) async {
-    List<File> images = await ChristianPickerImage.pickImages(maxImages: 1);
+  void takeImage() async {
+    PickedFile images = await _picker.getImage(source: ImageSource.gallery);
     setState(() {
-      imagePath = images[0].path;
+      imagePath = images.path;
     });
-    Navigator.of(context).pop();
-  }
-
-  Future _pickImage(BuildContext context) async {
-    showDialog<Null>(
-        context: context,
-        barrierDismissible: false,
-        builder: (BuildContext context) {
-          takeImage(context);
-          return Center();
-        });
   }
 
   @override
@@ -64,8 +55,8 @@ class _HomePageState extends State<HomePage> {
 
     try {
       results = await Filter.getThumbs(imagePath);
-    } on PlatformException {
-      results = 'Failed to get image thumbnails.';
+    } catch(e){
+      results = 'Error: $e';
     }
 
     if (!mounted) return;
@@ -75,11 +66,30 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  Future<void> applyFinal(int index) async {
+    var results;
+
+    try {
+      results = await Filter.finalOutput(imagePath, index + 1);
+    } catch(e){
+      results = 'Error: $e';
+    }
+
+    if (!mounted) return;
+
+    print("###### results: $results");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Plugin example app'),
+        actions: [
+          CircularProgressIndicator(
+            backgroundColor: Colors.white,
+          )
+        ],
       ),
       body: Stack(
         alignment: Alignment.bottomCenter,
@@ -88,7 +98,7 @@ class _HomePageState extends State<HomePage> {
             child: imagePath == null
                 ? FlatButton(
                     onPressed: () {
-                      _pickImage(context);
+                      takeImage();
                     },
                     child: Text("pick"),
                   )
@@ -97,7 +107,7 @@ class _HomePageState extends State<HomePage> {
           _results == null
               ? Container()
               : Container(
-                  height: 150,
+                  height: 180,
                   width: double.infinity,
                   child: ListView.builder(
                     itemCount: _results.length,
@@ -106,17 +116,18 @@ class _HomePageState extends State<HomePage> {
                       return InkWell(
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            child: Image.memory(
-                              _results[index]
-                              // File(),
-                            ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text("${Filter.filters[index]}"),
+                              Image.memory(
+                                _results[index],
+                              ),
+                            ],
                           ),
                         ),
                         onTap: () {
-                          // setState(() {
-                          //   imagePath = _results[index];
-                          // });
+                          applyFinal(index);
                         },
                       );
                     },

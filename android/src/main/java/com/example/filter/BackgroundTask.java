@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.zomato.photofilters.SampleFilters;
+import com.zomato.photofilters.imageprocessors.Filter;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import android.util.Log;
 
 //public class BackgroundTask extends AsyncTask<ContextModel, Integer, List<String>> {
 //    private List<ThumbnailItem> filterThumbs = new ArrayList<ThumbnailItem>();
@@ -24,11 +26,28 @@ import java.util.UUID;
 
 public class BackgroundTask {
     ContextModel contextModel;
+    private static List<Filter> filtersAvailable = new ArrayList<Filter>();
     private static List<ThumbnailItem> filterThumbs = new ArrayList<ThumbnailItem>();
     private static List<byte[]> processedThumbs = new ArrayList<byte[]>();
 
     BackgroundTask(ContextModel contextModel) {
         this.contextModel = contextModel;
+        filtersAvailable.add(SampleFilters.getAweStruckVibeFilter());
+        filtersAvailable.add(SampleFilters.getClarendon());
+        filtersAvailable.add(SampleFilters.getOldManFilter());
+        filtersAvailable.add(SampleFilters.getMarsFilter());
+        filtersAvailable.add(SampleFilters.getRiseFilter());
+        filtersAvailable.add(SampleFilters.getAprilFilter());
+        filtersAvailable.add(SampleFilters.getAmazonFilter());
+        filtersAvailable.add(SampleFilters.getStarLitFilter());
+        filtersAvailable.add(SampleFilters.getNightWhisperFilter());
+        filtersAvailable.add(SampleFilters.getLimeStutterFilter());
+        filtersAvailable.add(SampleFilters.getHaanFilter());
+        filtersAvailable.add(SampleFilters.getBlueMessFilter());
+        filtersAvailable.add(SampleFilters.getAdeleFilter());
+        filtersAvailable.add(SampleFilters.getCruzFilter());
+        filtersAvailable.add(SampleFilters.getMetropolis());
+        filtersAvailable.add(SampleFilters.getAudreyFilter());
     }
 
     //    @Override
@@ -126,7 +145,7 @@ public class BackgroundTask {
         filterThumbs.add(t11);
 
         for (ThumbnailItem thumb : filterThumbs) {
-            thumb.image = resize(thumb.image, 128, 128);
+            thumb.image = resize(thumb.image, 150, 150);
             thumb.image = thumb.filter.processFilter(thumb.image);
             processedThumbs.add(convert(thumb.image));
         }
@@ -182,5 +201,12 @@ public class BackgroundTask {
         return image;
     }
 
-
+    public String finalOutputFilter(int index,Bitmap bitmap){
+       System.out.println("Index: "+index);
+       Filter filter = filtersAvailable.get(index);
+       System.out.println("final filter: "+filter.toString());
+       Bitmap processed =  SampleFilters.getMetropolis().processFilter(bitmap);
+       System.out.println("Done processing final");
+       return createTemporaryImageFile(this.contextModel.context,processed);
+    }
 }
