@@ -8,7 +8,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  christian_picker_image: ^0.1.7
+  image_picker: ^0.6.7+11
 
 dev_dependencies:
   flutter_test:

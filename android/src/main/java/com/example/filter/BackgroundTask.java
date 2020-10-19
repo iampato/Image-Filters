@@ -3,13 +3,11 @@ package com.example.filter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.util.Log;
 
 import com.zomato.photofilters.SampleFilters;
+import com.zomato.photofilters.imageprocessors.Filter;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -24,11 +22,31 @@ import java.util.UUID;
 
 public class BackgroundTask {
     ContextModel contextModel;
+    //    Filter[] filters = {SampleFilters.getAweStruckVibeFilter(),SampleFilters.getClarendon(),};
+    private static List<Filter> filtersAvailable = new ArrayList<Filter>();
     private static List<ThumbnailItem> filterThumbs = new ArrayList<ThumbnailItem>();
     private static List<byte[]> processedThumbs = new ArrayList<byte[]>();
 
     BackgroundTask(ContextModel contextModel) {
         this.contextModel = contextModel;
+//        CleanCache cleanCache = new CleanCache(this.contextModel.context);
+//        cleanCache.run();
+//        filtersAvailable.add(SampleFilters.getAweStruckVibeFilter());
+//        filtersAvailable.add(SampleFilters.getClarendon());
+//        filtersAvailable.add(SampleFilters.getOldManFilter());
+//        filtersAvailable.add(SampleFilters.getMarsFilter());
+//        filtersAvailable.add(SampleFilters.getRiseFilter());
+//        filtersAvailable.add(SampleFilters.getAprilFilter());
+//        filtersAvailable.add(SampleFilters.getAmazonFilter());
+//        filtersAvailable.add(SampleFilters.getStarLitFilter());
+//        filtersAvailable.add(SampleFilters.getNightWhisperFilter());
+//        filtersAvailable.add(SampleFilters.getLimeStutterFilter());
+//        filtersAvailable.add(SampleFilters.getHaanFilter());
+//        filtersAvailable.add(SampleFilters.getBlueMessFilter());
+//        filtersAvailable.add(SampleFilters.getAdeleFilter());
+//        filtersAvailable.add(SampleFilters.getCruzFilter());
+//        filtersAvailable.add(SampleFilters.getMetropolis());
+//        filtersAvailable.add(SampleFilters.getAudreyFilter());
     }
 
     //    @Override
@@ -72,7 +90,7 @@ public class BackgroundTask {
         t16.image = bitmap;
         t17.image = bitmap;
 
-            clearThumbs();
+        clearThumbs();
         filterThumbs = new ArrayList();
 
         filterThumbs.add(t1);// Original Image
@@ -126,7 +144,7 @@ public class BackgroundTask {
         filterThumbs.add(t11);
 
         for (ThumbnailItem thumb : filterThumbs) {
-            thumb.image = resize(thumb.image, 128, 128);
+            thumb.image = resize(thumb.image, 150, 150);
             thumb.image = thumb.filter.processFilter(thumb.image);
             processedThumbs.add(convert(thumb.image));
         }
@@ -138,6 +156,7 @@ public class BackgroundTask {
         filterThumbs = new ArrayList<>();
         processedThumbs = new ArrayList<>();
     }
+
     private static byte[] convert(Bitmap thumb) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         thumb.compress(Bitmap.CompressFormat.PNG, 80, stream);
@@ -182,5 +201,117 @@ public class BackgroundTask {
         return image;
     }
 
+    public String finalOutputFilter(int ind, Bitmap bitmap) {
+        int index = ind - 1;
+        System.out.println("Index: " + index);
+        Filter filter = getFilterByIndex(index);
+        Bitmap processed = filter.processFilter(resize(bitmap, 640, 640));
+        System.out.println("Done processing final");
+        return createTemporaryImageFile(this.contextModel.context, processed);
+    }
 
+    public Filter getFilterByIndex(int index) {
+        Filter filter;
+        switch (index) {
+            case 1:
+                filter = SampleFilters.getAweStruckVibeFilter();
+                break;
+            case 2:
+                filter = SampleFilters.getClarendon();
+                break;
+            case 3:
+                filter = SampleFilters.getOldManFilter();
+                break;
+            case 4:
+                filter = SampleFilters.getMarsFilter();
+                break;
+            case 5:
+                filter = SampleFilters.getRiseFilter();
+                break;
+            case 6:
+                filter = SampleFilters.getAprilFilter();
+                break;
+            case 7:
+                filter = SampleFilters.getAmazonFilter();
+                break;
+            case 8:
+                filter = SampleFilters.getStarLitFilter();
+                break;
+            case 9:
+                filter = SampleFilters.getNightWhisperFilter();
+                break;
+            case 10:
+                filter = SampleFilters.getLimeStutterFilter();
+                break;
+            case 11:
+                filter = SampleFilters.getHaanFilter();
+                break;
+            case 12:
+                filter = SampleFilters.getBlueMessFilter();
+                break;
+            case 13:
+                filter = SampleFilters.getAdeleFilter();
+                break;
+            case 14:
+                filter = SampleFilters.getCruzFilter();
+                break;
+            case 15:
+                filter = SampleFilters.getMetropolis();
+                break;
+            case 16:
+                filter = SampleFilters.getAudreyFilter();
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + index);
+        }
+        return filter;
+    }
+}
+/*
+ */
+
+class CleanCache{
+    Context context;
+
+    CleanCache(Context context) {
+        this.context = context;
+    }
+
+    public void run() {
+        File dir = context.getCacheDir();
+        File[] files = dir.listFiles();
+
+        if (files != null) {
+            for (File file : files)
+                file.delete();
+        }
+//        try {
+//            if (dir != null && dir.isDirectory()) {
+//                deleteDir(dir);
+//            }
+//        } catch (Exception e) {
+//            // TODO: handle exception
+//        }
+////            if (dir != null && dir.isDirectory()) {
+////                String[] children = dir.list();
+////                for (int i = 0; i < children.length; i++) {
+////                    deleteDir(new File(dir, children[i]));
+////                }
+////            }
+    }
+
+    public static boolean deleteDir(File dir) {
+        if (dir != null && dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i = 0; i < children.length; i++) {
+                boolean success = deleteDir(new File(dir, children[i]));
+                if (!success) {
+                    return false;
+                }
+            }
+        }
+
+        // The directory is now empty so delete it
+        return dir.delete();
+    }
 }

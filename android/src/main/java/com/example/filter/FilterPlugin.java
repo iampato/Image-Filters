@@ -62,9 +62,25 @@ public class FilterPlugin implements FlutterPlugin, MethodChannel.MethodCallHand
         if (call.method.equals("generateFilters")) {
             String filePathFromDart = (String) call.arguments;
             applyFilter(filePathFromDart, result);
-        } else if (call.method.equals("finalOutput")) {
-            String path = call.argument("path");
-            String filter = call.argument("filter");
+        } else if (call.method.equals("final_output")) {
+            String path = (String) call.argument("path");
+            int filter = call.argument("filter");
+
+            try {
+                File srcFile = new File(path);
+                Bitmap srcBitmap = BitmapFactory.decodeFile(srcFile.getAbsolutePath(), null);
+                ContextModel contextModel = new ContextModel(srcBitmap, context);
+                BackgroundTask backgroundTask = new BackgroundTask(contextModel);
+                String filename = backgroundTask.finalOutputFilter(filter, srcBitmap);
+                if (filename.equals(null) || filename.equals("")) {
+                    result.error("INVALID", "error in creating temporary file", null);
+                } else {
+                    result.success(filename);
+                }
+            } catch (Exception e) {
+                result.error("INVALID", e.toString(), null);
+            }
+
         } else {
             result.notImplemented();
         }
