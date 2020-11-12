@@ -1,4 +1,4 @@
-## 0.0.4
+## 0.0.5
 
-- Runs in the background
-- Add more filters
+hardcoded ndk version
+
