@@ -1,6 +1,6 @@
 name: filter
 description: A flutter plugin project to apply images filters to file image natively and efficiently.
-version: 0.0.4
+version: 1.0.0
 homepage: https://github.com/Iampato/Image-Filters
 
 environment:

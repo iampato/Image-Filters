@@ -62,6 +62,8 @@ class _HomePageState extends State<HomePage> {
     }
 
     if (!mounted) return;
+    print("returned");
+    print(results);
 
     setState(() {
       _results = results;
@@ -92,8 +94,18 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('Plugin example app'),
         actions: [
-          CircularProgressIndicator(
-            backgroundColor: Colors.white,
+          IconButton(
+            icon: Icon(Icons.done),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) {
+                  return TestPage(
+                    filePath: imagePath,
+                  );
+                }),
+              );
+            },
           )
         ],
       ),
@@ -102,12 +114,8 @@ class _HomePageState extends State<HomePage> {
         children: <Widget>[
           Center(
             child: imagePath == null
-                ? FlatButton(
-                    onPressed: () {
-                      takeImage();
-                    },
-                    child: Text("pick"),
-                  )
+                ?  Text("Press the plus icon to add image")
+                  
                 : Image.file(File(imagePath)),
           ),
           _results == null
@@ -133,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               CircleAvatar(
-                                radius: 40,
+                                radius: 60,
                                 backgroundImage: MemoryImage(
                                   _results[index],
                                 ),
@@ -155,21 +163,10 @@ class _HomePageState extends State<HomePage> {
                 ),
         ],
       ),
-      floatingActionButton: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          FloatingActionButton(
-            heroTag: "btn2",
-            child: Icon(Icons.done),
-            onPressed: () => setState(() {}),
-          ),
-          SizedBox(height: 10),
-          FloatingActionButton(
-            heroTag: "btn1",
-            child: Icon(Icons.add),
-            onPressed: () => applyFilters(),
-          ),
-        ],
+      floatingActionButton: FloatingActionButton(
+        heroTag: "btn1",
+        child: imagePath == null ? Icon(Icons.add) : Icon(Icons.color_lens),
+        onPressed: imagePath == null ? () => takeImage() : () => applyFilters(),
       ),
     );
   }
